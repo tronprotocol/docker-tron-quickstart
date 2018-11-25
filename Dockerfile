@@ -56,7 +56,7 @@ RUN apt-get install git -y && \
   git clone https://github.com/tronprotocol/java-tron.git && \
   cd java-tron && \
   git fetch && \
-  git checkout ev2-improve && \
+  git checkout test_ev2 && \
   cp ../conf/mongodb.properties src/main/resources/. && \
   ./gradlew build -x test && \
   cd ..
