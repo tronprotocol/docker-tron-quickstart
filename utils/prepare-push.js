@@ -33,7 +33,7 @@ build.on('exit', function (code) {
   const prev = `${ver[0]}.${ver[1]}.${parseInt(ver[2]) - 1}`
 
   console.log(`Deleting previous ${prev} version locally\n`)
-  execSync(`docker rmi ${prev}`)
+  execSync(`docker rmi trontools/quickstart:${prev}`)
 
   console.log('Ready for pushing. Launch:\ndocker push trontools/quickstart\n')
 })

@@ -279,7 +279,7 @@ Sometimes, for example running tests with TronBox, we ask the node to performe a
 
 Unfortunately, you cannot use this image to create a node in the main Tron network because it uses a version of java-tron who is not the one required for a standard full node.
 
-### Latest version is `1.2.0`
+### Latest version is `1.2.1`
 
 To be updated, take a look at https://hub.docker.com/r/trontools/quickstart/tags/
 
