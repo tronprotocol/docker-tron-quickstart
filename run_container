@@ -1,0 +1,14 @@
+#!/bin/bash
+
+redis-server
+
+finish() {
+    rm tmpfiles
+    exit
+}
+trap finish SIGINT
+
+while :; do
+    echo "Running..."
+    sleep 3
+done
