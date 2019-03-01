@@ -1,11 +1,15 @@
 #!/bin/bash
+echo "Hello from run_container"
 
-redis-server
+# start redis-server
+redis-server --protected-mode no
+
 
 finish() {
     rm tmpfiles
     exit
 }
+
 trap finish SIGINT
 
 while :; do

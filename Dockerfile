@@ -9,11 +9,16 @@ ENV JAVA_HOME /usr/lib/jre
 RUN mkdir /home/quickstart
 WORKDIR /home/quickstart
 
+ADD ./run_container ./run_container
+ADD ./src ./src
+
+RUN chmod +x ./run_container
+
 # replace shell with bash so we can source files
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # Install basic need packages
-RUN apt-get update && apt-get install -y --no-install-recommends apt-utils \
+RUN apt-get update && apt-get install -y --no-install-recommends \
    gnupg2 curl ca-certificates \
    && apt-get -y autoclean
 
@@ -41,7 +46,4 @@ RUN npm -v
 # Eventron
 ENV SECRET=TNSpckEZhGfZ4ryidHG2fYWMARLpZ6U139
 
-
-# ADD ./run_container ./run_container
-# RUN chmod +x ./run_container
-# CMD ["./run_container"]
+CMD ["./run_container"]
