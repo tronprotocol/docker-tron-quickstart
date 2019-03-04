@@ -2,8 +2,14 @@
 echo "Hello from run_container"
 
 # start redis-server
-redis-server --protected-mode no
+echo 'Starting redis-server...'
+nohup redis-server --protected-mode no > /dev/null 2>&1 &
+echo "Redis started."
 
+echo "Starting Eventron..."
+nohup node Eventron > /dev/null 2>&1 &
+nohup node Eventron/index.js > /dev/null 2>&1 &
+echo "Eventron started."
 
 finish() {
     rm tmpfiles

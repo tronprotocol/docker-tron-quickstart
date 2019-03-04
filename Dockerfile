@@ -3,6 +3,9 @@
 FROM ubuntu:latest
 LABEL maintainer="elluck91 <lukasz@tron.network>"
 
+# replace shell with bash so we can source files
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
 ARG DEBIAN_FRONTEND=noninteractive
 ENV JAVA_HOME /usr/lib/jre
 
@@ -10,12 +13,8 @@ RUN mkdir /home/quickstart
 WORKDIR /home/quickstart
 
 ADD ./run_container ./run_container
-ADD ./src ./src
-
-RUN chmod +x ./run_container
-
-# replace shell with bash so we can source files
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+ADD Nodes Nodes
+ADD Eventron Eventron
 
 # Install basic need packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -43,7 +42,5 @@ ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 RUN node -v
 RUN npm -v
 
-# Eventron
-ENV SECRET=TNSpckEZhGfZ4ryidHG2fYWMARLpZ6U139
-
+RUN chmod +x ./run_container
 CMD ["./run_container"]
